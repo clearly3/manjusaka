@@ -8,10 +8,14 @@
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 
+**高性能 · 高安全 · 全平台 · 开源免费**
+
+### 📈 Star 历史曲线
+
 ![GitHub stars](https://img.shields.io/github/stars/ydhcui/manjusaka?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/ydhcui/manjusaka?style=social)
 
-**高性能 · 高安全 · 全平台 · 开源免费**
+[![Star History Chart](https://api.star-history.com/svg?repos=ydhcui/manjusaka&type=Date)](https://star-history.com/#ydhcui/manjusaka&Date)
 
 </div>
 
@@ -21,10 +25,6 @@
 https://github.com/ydhcui/manjusaka
 
 Manjusaka（牛屎虾）——基于 Rust 的高性能远程管理平台，以 AI 决策与执行分离架构为核心，实现全平台支持、插件生态与趣味交互的完美融合。
-
-### 📈 Star 历史曲线
-
-[![Star History Chart](https://api.star-history.com/svg?repos=ydhcui/manjusaka&type=Date)](https://star-history.com/#ydhcui/manjusaka&Date)
 
 ### ✨ 特性
 
