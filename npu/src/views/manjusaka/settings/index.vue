@@ -56,7 +56,8 @@ export default defineComponent({
         {
           title: "备注",
           width: 250,
-          dataIndex: "keynote",
+          align: "left",
+          dataIndex: "valuenote",
         },
         {
           title: "时间",

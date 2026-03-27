@@ -6,7 +6,8 @@ mod npu;
 mod npc;
 mod core;
 mod macros;
-
+mod aibot;
+mod bots;
 
 #[tokio::main]
 async fn main() {

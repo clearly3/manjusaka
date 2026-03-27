@@ -1,6 +1,7 @@
 use crate::models;
 use crate::protos;
 use crate::core;
+use crate::aibot;
 use crate::npu::user::types::UserInfo;
 use super::{ApiResponse,JsonResponse};
 use crate::unwrap_err;
@@ -45,6 +46,13 @@ pub mod types {
 
     #[derive(Debug, Object, Deserialize, Default, Serialize)]
     pub struct AgentData {
+        pub id: String,
+        pub data: String,
+    }
+
+    #[derive(Debug, Object, Deserialize, Default, Serialize)]
+    pub struct ChatData {
+        pub taskid: String,
         pub id: String,
         pub data: String,
     }
@@ -141,6 +149,20 @@ impl AgentApi {
         let mut cursor = std::io::Cursor::new(data);
         let mut event = unwrap_err!(protos::nps::AgentEvent::decode(&mut cursor));
         app.add_event(event).await;
+        Ok(Json(response))
+    }
+
+    #[oai(path = "/agentaichat", method = "post")]
+    pub async fn agentaichat(
+        &self,
+        app: Data<&core::AppState>,
+        Json(req): Json<types::AgentData>,
+    ) -> Result<JsonResponse<String>> {
+        let mut response = ApiResponse::default();
+
+        let data = aibot::run_app(&app, &req.id, &req.data).await?;
+        response.with_data(data);
+
         Ok(Json(response))
     }
 

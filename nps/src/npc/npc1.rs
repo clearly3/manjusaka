@@ -384,7 +384,7 @@ fn payload_download(strmod: u16) -> Vec<u8> {
         1 => "npc1",
         2 => "npc2",
         3 => "buut",
-        4 => "desk",
+        4 => "diwe",
         _ => ""
     };
 

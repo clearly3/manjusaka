@@ -1,6 +1,6 @@
 [package]
 name = "nps"
-version = "1.0.1"
+version = "1.2.1"
 edition = "2021"
 
 
@@ -9,6 +9,7 @@ noise = { version = "*", path = "../libs/noise"}
 utils = { version = "*", path = "../libs/utils"}
 crypto = { version = "*", path = "../libs/crypto"}
 transport = { version = "*", path = "../libs/transport" , features = ["tcp","kcp","ws"]}
+botrs = { version = "*", path = "../libs/botrs-0.2.6"}
 
 poem = { version = "3", features = ["session", "cookie", "multipart","websocket","embed","rustls","anyhow"] }
 poem-openapi = { version = "5", features = ["rapidoc"] }
@@ -19,6 +20,12 @@ serde_json = "1.0"
 captcha-rs = "0.2.11"
 rust-embed = "8.0"
 chrono = "0.4"
+
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls","json"] }
+sha2 = "0.10"
+rusqlite = { version = "0.32", features = ["bundled"] }
+uuid = { version = "1.0", features = ["v4", "fast-rng"] }
+
 
 image.workspace = true
 tokio.workspace = true

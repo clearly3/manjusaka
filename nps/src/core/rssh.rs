@@ -6,6 +6,7 @@ use tokio::net::TcpListener;
 use tokio::sync::oneshot;
 
 use std::net::SocketAddr;
+use std::sync::Arc;
 
 pub struct RsshClient {}
 
@@ -42,7 +43,7 @@ impl RsshSession {
             channel_buffer_size: u32::MAX as usize,
             .. Default::default()
         };
-        let mut session = russh::client::connect_stream(std::sync::Arc::new(config),yamux_stream,ssh).await?;
+        let mut session = russh::client::connect_stream(Arc::new(config),yamux_stream,ssh).await?;
         let _ = session.authenticate_password("Hacker","manjusaka").await?;
         let channel = session.channel_open_session().await?;
         Ok(channel)
@@ -74,6 +75,12 @@ impl RsshSession {
         Ok(channel)
     }
 
+    pub async fn agent(&self, id: &str) -> Result<russh::Channel<russh::client::Msg>> {
+        let mut channel = self.channel(id).await?;
+        let _ = channel.request_subsystem(true, "agent").await?;
+        Ok(channel)
+    }
+
     pub async fn proxy(
         &self, 
         id: &str, 
@@ -98,28 +105,34 @@ impl RsshSession {
                                     channel_buffer_size: u32::MAX as usize,
                                     .. Default::default()
                                 };
-                                let mut session = russh::client::connect_stream(std::sync::Arc::new(config),yamux_stream,ssh).await.unwrap();
-                                let _ = session.authenticate_password(&username, &password).await.unwrap();
-                                let channel = if let Some(addr) = remote_addr {
-                                    let channel = session.channel_open_direct_tcpip(
-                                            addr.ip().to_string(),
-                                            addr.port() as u32,
-                                            client_addr.ip().to_string(),
-                                            client_addr.port() as u32
-                                    ).await.unwrap();
-                                    channel
-                                }else{
-                                    let channel = session.channel_open_session().await.unwrap();
-                                    let _ = channel.request_subsystem(true, "socks5").await.unwrap();
-                                    channel
-                                };
-                                let mut outbound = channel.into_stream();
-                                tokio::spawn(async move{
-                                    let _ = tokio::io::copy_bidirectional(&mut inbound, &mut outbound).await;
-                                });
+                                if let Ok(mut session) = russh::client::connect_stream(
+                                    Arc::new(config),
+                                    yamux_stream,
+                                    ssh
+                                ).await {
+                                    if let Err(e) = session.authenticate_password(&username, &password).await{
+                                        log::error!("ssh authenticate_password err {}",e);
+                                        continue;
+                                    }
+                                    let channel = if let Some(addr) = remote_addr {
+                                        let channel = session.channel_open_direct_tcpip(
+                                                addr.ip().to_string(),
+                                                addr.port() as u32,
+                                                client_addr.ip().to_string(),
+                                                client_addr.port() as u32
+                                        ).await.unwrap();
+                                        channel
+                                    }else{
+                                        let channel = session.channel_open_session().await.unwrap();
+                                        let _ = channel.request_subsystem(true, "socks5").await.unwrap();
+                                        channel
+                                    };
+                                    let mut outbound = channel.into_stream();
+                                    tokio::spawn(async move{
+                                        let _ = tokio::io::copy_bidirectional(&mut inbound, &mut outbound).await;
+                                    });
+                                }
                             }
-                        }else{
-                            break;
                         }
                     },
                     _ = &mut rx => {

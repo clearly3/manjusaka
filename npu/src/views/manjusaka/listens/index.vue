@@ -2,6 +2,7 @@
   <div>
     <BasicTable @register="registerTablelisten">
       <template #toolbar>
+        <!-- <a-button type="primary" @click="handleAgentCreate"> 生成NPC2 </a-button> -->
         <a-button type="primary" @click="handleCreate"> 新建监听器 </a-button>
       </template>
       <template #action="{ record }">
@@ -26,6 +27,7 @@
       </template>
     </BasicTable>
     <RoleDrawer @register="registerDrawer" @success="handleSuccess" />
+    <RoleModal @register="registerModal" />
   </div>
 </template>
 <script lang="ts">
@@ -36,15 +38,18 @@ import { BasicForm, useForm } from "/@/components/Form/index";
 import { Description, DescItem, useDescription } from "/@/components/Description/index";
 import { PostApi } from "/@/api";
 import { useMessage } from "/@/hooks/web/useMessage";
+import { useModal } from "/@/components/Modal";
 import { useDrawer } from "/@/components/Drawer";
 import { useUserStore } from "/@/store/modules/user";
 import RoleDrawer from "./RoleDrawer.vue";
+import RoleModal from "./RoleModal.vue";
 import { formatToDate } from "/@/utils/dateUtil";
 
 export default defineComponent({
   name: "ListenManagement",
   components: {
     BasicTable,
+    RoleModal,
     RoleDrawer,
     TableAction,
     Description,
@@ -56,6 +61,7 @@ export default defineComponent({
     });
     const { createMessage } = useMessage();
     const userStore = useUserStore();
+    const [registerModal, { openModal }] = useModal();
     const [registerDrawer, { openDrawer }] = useDrawer();
     const [registerTablelisten, { reload }] = useTable({
       title: "NPC2监听器",
@@ -163,13 +169,26 @@ export default defineComponent({
       reload();
     }
 
+    function handleAgentCreate(record: Recordable) {
+      let data = {
+        name: state.target.name,
+        callback1: state.target.callback1,
+        route: state.target.route,
+        platform: "1",
+        arch: "1",
+      };
+      openModal(true, data);
+    }
+
     return {
       registerTablelisten,
+      registerModal,
       registerDrawer,
       handleCreate,
       handleEdit,
       handleDelete,
       handleSuccess,
+      handleAgentCreate
     };
   },
 });

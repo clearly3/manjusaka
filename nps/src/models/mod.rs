@@ -79,7 +79,16 @@ pub async fn init_database(db: &DatabaseConnection) -> Result<()> {
             
             settings::set(db,"nps.admin","manjusaka",None,Some("管理后台".to_string()),None).await?;
             settings::set(db,"nps.listen","0.0.0.0:33000",None,Some("管理地址".to_string()),None).await?;
-            settings::set(db,"npc.listen","0.0.0.0:31000",None,Some("上线地址".to_string()),None).await?; 
+            settings::set(db,"npc.listen","0.0.0.0:31000",None,Some("上线地址".to_string()),None).await?;
+
+            settings::set(db,"ai.base_url","https://api.deepseek.com/v1/",None,Some("AI引擎地址".to_string()),None).await?;
+            settings::set(db,"ai.api_key","sk-xxxxxxxxxxxxxxxxxxxxxxxxx",None,Some("AI密钥".to_string()),None).await?;
+            settings::set(db,"ai.model_name","deepseek-chat",None,Some("AI模型名称".to_string()),None).await?; 
+
+            settings::set(db,"qq.app_id","",None,Some("QQ机器人 app_id".to_string()),None).await?; 
+            settings::set(db,"qq.app_secret","",None,Some("QQ机器人 app_secret".to_string()),None).await?;
+            settings::set(db,"weixin.app_id","",None,Some("微信机器人 app_id".to_string()),None).await?;
+            settings::set(db,"weixin.app_secret","",None,Some("微信机器人 app_secret".to_string()),None).await?;
 
         },
         Ok(Some(user)) => {

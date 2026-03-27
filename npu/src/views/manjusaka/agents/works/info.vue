@@ -1,8 +1,9 @@
 <template>
   <PageWrapper dense contentFullHeight contentBackground fixedHeight>
     <div class="flex flex-col h-full">
-      <CollapseContainer class="flex-shrink-0">
-        <template v-if="state.agent.ntype === 'npc1'">
+    <CollapseContainer>
+        <template #title>
+        <div v-if="state.agent.ntype === 'npc1'">
         <PopConfirmButton
           :disabled="state.agent.ntype !== 'npc1'"
           title="确定销毁该NPC吗?"
@@ -26,13 +27,13 @@
           一键截屏
         </a-button>
         <a-button type="ghost" />
-        </template>
         <PopConfirmButton
           type="danger"
           :title="'确定' + (state.agent.npc2 ? '卸载' : '加载') + 'NPC2吗?'"
           @confirm="Npc2Load"
         >{{ state.agent.npc2 ? "卸载" : "加载" }}NPC2</PopConfirmButton>
-
+        </div>
+        
         <PopConfirmButton
           :disabled="!state.agent.npc2"
           title="确定打开文件管理吗?"
@@ -53,18 +54,18 @@
           type="primary"
           @confirm="OpenVnc(state.agent.id)"
         >虚拟桌面</PopConfirmButton>
-
-
         <a-button
           @click="CreateProxy"
           type="primary"
           :disabled="!state.agent.npc2"
         >新建隧道</a-button>
+        <a-button
+          @click="OpenAiChat(state.agent.id)"
+          type="primary"
+          :disabled="!state.agent.npc2"
+        >AI聊天</a-button>
         <a-button type="ghost" />
-        <template v-if="state.agent.ntype === 'npc1'">
-
-        <a-button @click="RunPlugin" type="primary"> 运行插件 </a-button>
-
+        <a-button v-if="state.agent.ntype === 'npc1'" @click="RunPlugin" type="primary"> 运行插件 </a-button>
         </template>
         <Description @register="agentinfo" :data="state.agent" />
       </CollapseContainer>
@@ -77,7 +78,7 @@
           placeholder="输入help查看帮助"
           autocomplete="on"
         >
-          <template #addonBefore>输入命令： </template>
+        <template #addonBefore>输入命令： </template>
         </a-input>
         <a-button
           type="danger"
@@ -323,6 +324,11 @@ export default defineComponent({
     function OpenRdp(id) {
       go("/agentrdp/" + id);
     }
+
+    function OpenAiChat(id) {
+      go("/agentaichat/" + id);
+    }
+    
 
     function Npc2Load() {
       if (!state.agent.npc2) {
@@ -617,6 +623,7 @@ export default defineComponent({
       OpenFile,
       OpenVnc,
       OpenRdp,
+      OpenAiChat,
     };
   },
 });

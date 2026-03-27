@@ -65,7 +65,7 @@ pub async fn set(
             	active_model.stype = Set(s.to_string());
             }
             if let Some(s) = keynote{
-            	active_model.valuenote = Set(s.to_string());
+            	active_model.keynote = Set(s.to_string());
             }
             if let Some(s) = valuenote{
             	active_model.valuenote = Set(s.to_string());
@@ -82,7 +82,7 @@ pub async fn set(
             	active_model.stype = Set(s.to_string());
             }
             if let Some(s) = keynote{
-            	active_model.valuenote = Set(s.to_string());
+            	active_model.keynote = Set(s.to_string());
             }
             if let Some(s) = valuenote{
             	active_model.valuenote = Set(s.to_string());

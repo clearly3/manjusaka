@@ -49,11 +49,11 @@ export default defineComponent({
   name: "ProjectManagement",
   components: {
     BasicTable,
+    RoleModal,
     RoleDrawer,
     TableAction,
     Description,
     BasicForm,
-    RoleModal,
   },
   setup() {
     const state = reactive({

@@ -127,7 +127,7 @@ cargo doc --workspace --open
 
 4、上线后连接npc1 加载npc2 等待回连。
 
-
+5、修改相关设置后需要重启应用生效。
 
 
 ## 功能截图
@@ -165,9 +165,20 @@ cargo doc --workspace --open
 ### 查看隧道
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/9.png)
 
+### AI聊天功能
+![](https://github.com/YDHCUI/manjusaka/blob/main/images/11.png)
 
 
 ## 更新
+
+
+### v1.2
+1、 支持插件、net、bof、exe可执行插件等
+
+2、 支持ai agent模式、 将决策端和执行端分离构架
+
+3、加入QQ支持  在qq上面直接让ai帮你内网渗透
+
 
 ### v1.0
 1、 rust重构、支持tcp，分段加载，交互shell

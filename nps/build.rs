@@ -1,6 +1,6 @@
 fn main() {
-
-    /*let mut config = prost_build::Config::new();
+    /*
+    let mut config = prost_build::Config::new();
             config.type_attribute(".", "#[derive(serde::Serialize, serde::Deserialize)]");
             config.type_attribute("nps.Agent", "#[derive(poem_openapi::Object)]");
             config.out_dir("src/protos");

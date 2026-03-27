@@ -65,7 +65,7 @@ jobs:
           cp -r plugins staging/plugins
 
           cp "./target/${{ matrix.target }}/release/nps" "staging/nps.osx"
-          tar -cf "release.${{ matrix.target }}.tar.gz" -C staging .
+          tar -czf "release.${{ matrix.target }}.tar.gz" -C staging .
 
       - name: Release
         uses: softprops/action-gh-release@v2

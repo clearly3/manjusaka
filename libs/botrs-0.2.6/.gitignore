@@ -1,0 +1,9 @@
+/target
+
+botpy
+
+examples/config.toml
+
+docs/.vitepress/dist
+docs/.vitepress/cache
+node_modules

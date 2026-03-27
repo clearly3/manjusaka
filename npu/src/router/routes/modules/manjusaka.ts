@@ -36,6 +36,11 @@ const routes: AppRouteModule = {
           component: () => import("/@/views/manjusaka/agents/works/rdp.vue"),
           meta: {hideMenu: true},
       },{
+          path: "/agentaichat/:id",
+          name: "AgentAiChat",
+          component: () => import("/@/views/manjusaka/agents/works/aichat.vue"),
+          meta: {hideMenu: true},
+      },{
           path: "/agents",
           name: "AgentList",
           component: () => import("/@/views/manjusaka/agents/index.vue"),

@@ -16,7 +16,10 @@ export function GetApi(data: Any, mode: ErrorMessageMode = "modal") {
 }
 
 
-export function PostApi(data: Any, mode: ErrorMessageMode = "modal") {
+export function PostApi(
+  data: Any,
+  mode: ErrorMessageMode = "modal",
+) {
   return defHttp.post<Any>(
     {
       url: data.action,

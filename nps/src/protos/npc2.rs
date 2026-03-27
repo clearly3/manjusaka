@@ -43,3 +43,14 @@ pub struct Config {
     #[prost(string, tag = "7")]
     pub proxy: ::prost::alloc::string::String,
 }
+/// 工具命令
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct ToolAct {
+    #[prost(string, tag = "1")]
+    pub act: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub args: ::prost::alloc::string::String,
+    #[prost(bytes = "vec", tag = "3")]
+    pub data: ::prost::alloc::vec::Vec<u8>,
+}

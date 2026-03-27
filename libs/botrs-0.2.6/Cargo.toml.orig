@@ -1,0 +1,162 @@
+[package]
+name = "botrs"
+version = "0.2.6"
+edition = "2024"
+authors = ["YinMo19"]
+description = "A Rust QQ Bot framework based on QQ Guild Bot API"
+license = "MIT"
+repository = "https://github.com/YinMo19/botrs"
+keywords = ["qq", "bot", "guild", "api", "async"]
+readme = "README.md"
+categories = ["api-bindings", "asynchronous", "network-programming"]
+documentation = "https://docs.rs/botrs"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.0", features = ["full"] }
+tokio-tungstenite = { version = "0.20", features = ["native-tls"] }
+
+# HTTP client
+reqwest = { version = "0.12.22", features = ["json", "stream"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# WebSocket and networking
+url = "2.4"
+futures-util = "0.3"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Utilities
+uuid = { version = "1.0", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+base64 = "0.21"
+async-trait = "0.1"
+
+# Optional features for examples
+clap = { version = "4.0", optional = true, features = ["derive"] }
+toml = { version = "0.8", optional = true }
+
+[dev-dependencies]
+tokio-test = "0.4"
+tempfile = "3.0"
+
+[features]
+default = []
+examples = ["clap", "toml"]
+
+[[example]]
+name = "simple_bot"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_at_reply"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_at_reply_command"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_at_reply_embed"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_at_reply_markdown"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_at_reply_keyboard"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_group_reply_text"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_c2c_reply_text"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_recall"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_at_reply_file_data"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_dms_reply"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_at_reply_reference"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_new_message_api"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_announce"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_api_permission"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_at_reply_ark"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_audio_or_live_channel_member"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_c2c_manage_event"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_c2c_reply_file"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_get_reaction_users"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_group_manage_event"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_group_reply_file"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_guild_member_event"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_open_forum_event"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_pins_message"
+required-features = ["examples"]
+
+[[example]]
+name = "demo_schedule"
+required-features = ["examples"]
+
+[lib]
+name = "botrs"
+path = "src/lib.rs"
