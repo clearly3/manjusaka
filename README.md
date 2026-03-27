@@ -167,6 +167,7 @@ cargo doc --workspace --open
 
 ### AI聊天功能
 ![](https://github.com/YDHCUI/manjusaka/blob/main/images/11.png)
+![](https://github.com/YDHCUI/manjusaka/blob/main/images/12.png)
 
 
 ## 更新
