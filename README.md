@@ -181,6 +181,17 @@ cargo doc --workspace --open
 3、加入QQ支持  在qq上面直接让ai帮你内网渗透
 
 
+### v1.1 
+
+1、实现插件支持, bof、crl 等插件
+
+2、实现getpass插件适配
+
+3、增加win7支持 
+
+4、修复vnc退出时自动点击右键的bug 
+
+
 ### v1.0
 1、 rust重构、支持tcp，分段加载，交互shell
 
@@ -200,17 +211,6 @@ cargo doc --workspace --open
 
 9、 修改vnc成单例模式，解决多用户连接时的cpu占用问题 20251214
 
-
-
-### v1.1 
-
-1、实现插件支持, bof、crl 等插件
-
-2、实现getpass插件适配
-
-3、增加win7支持 
-
-4、修复vnc退出时自动点击右键的bug 
 
 
 
