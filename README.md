@@ -1,6 +1,4 @@
-
-
-# Manjusaka - 牛屎花 
+# Manjusaka - 牛屎虾
 
 
 <div align="center">
@@ -9,21 +7,36 @@
 ![License](https://img.shields.io/badge/License-GPL--3.0-blue)
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
+![GitHub stars](https://img.shields.io/github/stars/ydhcui/manjusaka?style=social)
+![GitHub forks](https://img.shields.io/github/forks/ydhcui/manjusaka?style=social)
 
 **高性能 · 高安全 · 全平台 · 开源免费**
-
 
 </div>
 
 
-## 牛屎花  
+## 牛屎虾  
 
 https://github.com/ydhcui/manjusaka
 
+Manjusaka（牛屎虾）是一个基于 Rust 语言开发的现代化远程管理平台，采用微服务架构设计，提供高性能、高安全性的远程管理解决方案。项目名称来源于佛教中的"曼珠沙华"，象征着连接两个世界的桥梁，寓意着本平台作为连接管理端与被管理端的桥梁作用。
 
-Manjusaka（牛屎花）是一个基于 Rust 语言开发的现代化远程管理平台，采用微服务架构设计，提供高性能、高安全性的远程管理解决方案。项目名称来源于佛教中的"曼珠沙华"，象征着连接两个世界的桥梁，寓意着本平台作为连接管理端与被管理端的桥梁作用。
+### 📈 Star 历史曲线
 
+[![Star History Chart](https://api.star-history.com/svg?repos=ydhcui/manjusaka&type=Date)](https://star-history.com/#ydhcui/manjusaka&Date)
 
+### ✨ 特性
+
+- 🦀 **纯血 Rust**：极致性能，极致安全，拒绝历史包袱
+- 🌐 **全平台制霸**：Windows、Linux、macOS 通吃，甚至能在树莓派上跑
+- 🔥 **AI决策分离**：AI 只动脑，不动手，再也不怕“龙虾”清空你的本机文件
+- 🚀 **分段加载**：先上线再装逼，npc1 轻量级，npc2 全功能，按需加载
+- 🖥️ **虚拟桌面**：远程桌面不仅看得见，还能摸得着（VNC 模式）
+- 🗄️ **文件管理**：分块传输、断点续传，大文件传输稳如老狗
+- 🕳️ **隧道玩法**：端口转发、SOCKS5 代理，内网穿透玩出花
+- 🤖 **QQ智能助手**：在 QQ 上直接让 AI 帮你内网渗透，摸鱼渗透两不误
+- 🧩 **插件生态**：支持 BOF、Net、EXE 等插件，想加啥功能就加啥
+- 💬 **AI聊天**：内置大语言模型，通过聊天的方式来进行渗透
 
 ## 🏗️ 架构设计
 
@@ -106,6 +119,7 @@ cargo build --workspace --release
 ```
 
 4. **访问管理界面**
+
 打开浏览器访问：`https://localhost:33000/manjusaka/static`
 
 
@@ -176,7 +190,7 @@ cargo doc --workspace --open
 ### v1.2
 1、 支持插件、net、bof、exe可执行插件等
 
-2、 支持ai agent模式、 将决策端和执行端分离构架
+2、 支持AI Agent模式：将决策端和执行端分离架构，AI仅负责分析与规划，执行端在远端运行，确保安全
 
 3、加入QQ支持  在qq上面直接让ai帮你内网渗透
 
